@@ -1,0 +1,23 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-store-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: book-store-api
+  template:
+    metadata:
+      labels:
+        app: book-store-api
+    spec:
+      containers:
+      - name: book-store-api
+        image: book-store-api:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: APP_ENV
+          value: production
